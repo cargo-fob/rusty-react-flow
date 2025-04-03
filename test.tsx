@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState as useSt } from 'react';
+import * as R from 'react';
 
-const Hello = () => {
-  return <div>Hello World</div>;
-};
-
+export const Hello = () => <div>Hello</div>;
+export function greet() {}
 export default Hello;
