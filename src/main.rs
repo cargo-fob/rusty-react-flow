@@ -87,9 +87,13 @@ fn main() {
                 for spec in &named.specifiers {
                     match spec {
                         ExportSpecifier::Named(named_spec) => {
-                            let name = match &named_spec.exported {
-                                Some(ModuleExportName::Ident(id)) => id.sym.to_string(),
-                                _ => named_spec.orig.sym.to_string(),
+                            let name = if let Some(exported) = &named_spec.exported {
+                                match exported {
+                                    ModuleExportName::Ident(id) => id.sym.to_string(),
+                                    ModuleExportName::Str(s) => s.value.to_string(),
+                                }
+                            } else {
+                                named_spec.orig.atom().to_string()
                             };
                             exports.push(ExportInfo {
                                 name,
@@ -137,34 +141,36 @@ fn main() {
                     kind: "default".to_string(),
                 });
             }
-            ModuleItem::ModuleDecl(ModuleDecl::ExportDefaultDecl(decl)) => match decl {
-                DefaultDecl::Class(c) => {
-                    let name = c
-                        .ident
-                        .as_ref()
-                        .map(|id| id.sym.to_string())
-                        .unwrap_or_else(|| "<anonymous>".to_string());
-                    exports.push(ExportInfo {
-                        name,
-                        kind: "default-class".to_string(),
-                    });
-                }
-                DefaultDecl::Fn(f) => {
-                    let name = f
-                        .ident
-                        .as_ref()
-                        .map(|id| id.sym.to_string())
-                        .unwrap_or_else(|| "<anonymous>".to_string());
-                    exports.push(ExportInfo {
-                        name,
-                        kind: "default-function".to_string(),
-                    });
-                }
-                _ => {
-                    exports.push(ExportInfo {
-                        name: "<other>".to_string(),
-                        kind: "default".to_string(),
-                    });
+            ModuleItem::ModuleDecl(ModuleDecl::ExportDefaultDecl(decl)) => {
+                match &decl.decl {
+                    DefaultDecl::Class(c) => {
+                        let name = c
+                            .ident
+                            .as_ref()
+                            .map(|id| id.sym.to_string())
+                            .unwrap_or_else(|| "<anonymous>".to_string());
+                        exports.push(ExportInfo {
+                            name,
+                            kind: "default-class".to_string(),
+                        });
+                    }
+                    DefaultDecl::Fn(f) => {
+                        let name = f
+                            .ident
+                            .as_ref()
+                            .map(|id| id.sym.to_string())
+                            .unwrap_or_else(|| "<anonymous>".to_string());
+                        exports.push(ExportInfo {
+                            name,
+                            kind: "default-function".to_string(),
+                        });
+                    }
+                    DefaultDecl::TsInterfaceDecl(_) => {
+                        exports.push(ExportInfo {
+                            name: "<interface>".to_string(),
+                            kind: "default".to_string(),
+                        });
+                    }
                 }
             },
             _ => {}
