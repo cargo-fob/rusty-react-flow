@@ -2,8 +2,8 @@
 
 A powerful command-line tool to analyze TypeScript/JavaScript modules for imports and exports.
 
-[![Crates.io](https://img.shields.io/crates/v/typescript-analyzer)](https://crates.io/crates/typescript-analyzer)
-[![npm](https://img.shields.io/npm/v/typescript-analyzer)](https://www.npmjs.com/package/typescript-analyzer)
+[![Crates.io](https://img.shields.io/crates/v/typescript-analyzer)](https://crates.io/crates/rusty-react-flow)
+[![npm](https://img.shields.io/npm/v/typescript-analyzer)](https://www.npmjs.com/package/rusty-react-flow)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
