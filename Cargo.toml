@@ -1,7 +1,11 @@
 [package]
-name = "tsx-analyzer"
+name = "rusty-react-flow"
 version = "0.1.0"
 edition = "2024"
+
+[lib]
+name = "rusty_react_flow"
+path = "src/lib.rs"
 
 [dependencies]
 clap = { version = "4.5.35", features = ["derive"] }
