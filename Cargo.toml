@@ -2,6 +2,15 @@
 name = "rusty-react-flow"
 version = "0.1.0"
 edition = "2024"
+authors = ["Jaeha Lee <wogkdkrm112@gmail.com>"]
+description = "Parsing and analyzing React Components Flow code"
+repository = "https://github.com/cargo-fob/rusty-react-flow"
+license = "MIT"
+readme = "README.md"
+keywords = ["react", "rust", "cli", "parser", "typescript"]
+categories = ["command-line-utilities"]
+rust-version = "1.85.1"
+
 
 [lib]
 name = "rusty_react_flow"
