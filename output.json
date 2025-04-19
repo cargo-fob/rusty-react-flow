@@ -1,0 +1,51 @@
+{
+  "files": [
+    {
+      "filePath": "/Users/leejaeha/Documents/rust/tsx-analyzer/src/Category.tsx",
+      "imports": [
+        {
+          "name": "React",
+          "source": "react",
+          "kind": "default"
+        },
+        {
+          "name": "useSt",
+          "source": "react",
+          "kind": "named"
+        },
+        {
+          "name": "R",
+          "source": "react",
+          "kind": "namespace"
+        }
+      ],
+      "exports": [
+        {
+          "name": "Hello",
+          "kind": "variable"
+        },
+        {
+          "name": "greet",
+          "kind": "function"
+        },
+        {
+          "name": "<expression>",
+          "kind": "default"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalFiles": 1,
+    "totalImports": 3,
+    "totalExports": 3,
+    "mostImported": [
+      "react"
+    ],
+    "mostExported": [
+      "<expression>",
+      "greet",
+      "Hello"
+    ]
+  }
+}
